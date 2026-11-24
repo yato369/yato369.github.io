@@ -476,6 +476,16 @@ img,video{display:block;max-width:100%}
 .intro__skip:hover{color:var(--ink);border-color:var(--mute)}
 .intro.is-out .intro__skip{opacity:0}
 
+/* 微信里视频被拒播时的退路：poster 当静态首帧，做一次极缓慢的推近，
+   不做任何透明度/模糊变化 —— 那些在低色深屏幕上会出色带 */
+.intro.is-still .intro__v{
+  animation:introStill 3.2s var(--ease) forwards;
+}
+@keyframes introStill{
+  from{transform:scale(1)}
+  to{transform:scale(1.06)}
+}
+
 /* 进场时主页各层先藏起来，动效结束后依次浮上 */
 body.is-intro .brand,
 body.is-intro .view,
