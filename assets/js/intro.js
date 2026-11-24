@@ -70,6 +70,10 @@
   vid.setAttribute('airplay', 'deny');
   vid.setAttribute('disableRemotePlayback', '');
   vid.playsInline = true;
+  // 微信 X5 有一部分版本只认 autoplay 属性，不认手动 play()；
+  // muted 已经设好，加这个属性不会触发声音或全屏
+  vid.autoplay = true;
+  vid.setAttribute('autoplay', '');
   vid.poster = pick.p;
   vid.src = pick.v;
 
